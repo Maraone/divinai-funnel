@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DIVINAI SYSTEMS | By Tamara Hall Lewis</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Outfit:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brand-primary: #6366f1;
+      --brand-secondary: #a855f7;
+      --brand-accent: #22d3ee;
+      --bg-deep: #0f172a;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-deep);
+    }
+    .font-outfit { font-family: 'Outfit', sans-serif; }
+    .fade-in { animation: fadeIn 0.5s ease-in-out; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .spinner {
+      border: 3px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      border-top: 3px solid var(--brand-accent);
+      width: 20px;
+      height: 20px;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .brand-gradient {
+      background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+    }
+    .brand-text-gradient {
+      background: linear-gradient(to right, #818cf8, #c084fc, #22d3ee);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .image-container {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 1rem;
+      box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.3),
+                  0 8px 10px -6px rgb(0 0 0 / 0.3);
+    }
+    .image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .prompt-card {
+      background: rgba(30, 41, 59, 0.5);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.3s ease;
+    }
+    .prompt-card:hover {
+      border-color: var(--brand-primary);
+      background: rgba(30, 41, 59, 0.8);
+    }
+  </style>
+</head>
+<body class="text-slate-100 flex items-center justify-center min-h-screen p-4 sm:p-6 lg:p-8">
+
+  <div class="w-full max-w-3xl mx-auto">
+    <!-- Logo and Business Name -->
+    <header class="text-center mb-10 flex flex-col items-center">
+      <div class="mb-6 flex flex-col items-center">
+        <div class="brand-gradient p-3 rounded-2xl shadow-2xl shadow-indigo-500/20 mb-4">
+          <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+              d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z">
+            </path>
+          </svg>
+        </div>
+        <h2 class="font-outfit text-3xl font-black tracking-tighter uppercase mb-0">DIVINAI SYSTEMS</h2>
+        <p class="text-[10px] tracking-[0.3em] uppercase text-indigo-400 font-bold -mt-1 opacity-80">
+          By Tamara Hall Lewis
+        </p>
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl font-black brand-text-gradient mb-3 leading-tight font-outfit">
+        Upgrade Your Digital Selfies
+      </h1>
+      <p class="text-lg text-slate-400 max-w-lg">
+        Get 10 best-performing AI prompts curated to transform your personal brand.
+      </p>
+    </header>
+
+    <main class="bg-slate-800/40 border border-slate-700/50 rounded-3xl shadow-2xl p-6 sm:p-10 backdrop-blur-md">
+      <!-- Step 1: Lead Magnet Hook -->
+      <div id="hook-section">
+        <p class="text-xs font-bold text-cyan-400 mb-5 uppercase tracking-[0.2em] text-center">
+          Visual Excellence
+        </p>
+
+        <div class="image-container mb-8 border border-slate-700">
+          <img src="https://i.imgur.com/lWpHprH.png" alt="DIVINAI AI Showcase">
+        </div>
+
+        <div id="form-section" class="bg-slate-900/60 p-8 rounded-2xl border border-indigo-500/20 shadow-inner">
+          <p class="text-center font-medium text-slate-300 mb-6">
+            Enter your email to unlock the Master Prompt Pack instantly.
+          </p>
+          <form id="email-form" class="flex flex-col sm:flex-row gap-3">
+            <input
+              type="email"
+              id="email-input"
+              placeholder="Enter email address"
+              class="w-full sm:w-auto flex-1 px-4 py-3 rounded-xl bg-slate-800/50 border border-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
+              required
+            >
+            <button
+              type="submit"
+              class="w-full sm:w-auto brand-gradient hover:opacity-90 text-white px-8 py-3 rounded-xl font-bold transition-all shadow-lg shadow-indigo-500/20 whitespace-nowrap"
+            >
+              Unlock Now
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Step 2: The Dashboard (Hidden until email submitted) -->
+      <div id="prompts-section" class="hidden">
+        <div class="mb-10 p-7 bg-indigo-950/30 border border-indigo-500/30 rounded-2xl">
+          <h3 class="text-xl font-bold mb-3 flex items-center gap-2 font-outfit">
+            <span class="text-cyan-400">✨</span> Custom Prompt Generator
+          </h3>
+          <p class="text-sm text-slate-400 mb-5">
+            Input your vision and let the DIVINAI engine draft a professional prompt.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-3">
+            <input
+              type="text"
+              id="custom-creator-input"
+              placeholder="Describe your dream avatar..."
+              class="flex-grow px-5 py-3 bg-slate-900 border border-slate-700 rounded-xl text-sm focus:ring-1 focus:ring-cyan-500 outline-none"
+            >
+            <button
+              id="magic-create-btn"
+              class="bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 px-8 rounded-xl transition flex items-center justify-center gap-2 min-w-[120px]"
+            >
+              <span>Create</span>
+              <div id="magic-spinner" class="spinner hidden"></div>
+            </button>
+          </div>
+          <div id="magic-result-container" class="mt-5 hidden">
+            <div
+              id="magic-result-text"
+              class="bg-slate-950/50 p-5 rounded-xl border border-cyan-500/30 text-sm text-slate-200 leading-relaxed italic"
+            ></div>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between mb-6 border-b border-slate-700 pb-4">
+          <h4 class="text-lg font-bold font-outfit text-indigo-300">Starter Prompt Collection</h4>
+          <span class="text-[10px] bg-indigo-500/20 text-indigo-300 px-2 py-1 rounded uppercase font-black tracking-widest">
+            10 Prompts
+          </span>
+        </div>
+
+        <ul id="prompt-list" class="space-y-4"></ul>
+      </div>
+    </main>
+
+    <footer class="text-center mt-12 mb-8">
+      <div class="flex items-center justify-center gap-2 mb-2 opacity-60">
+        <span class="text-xs font-bold tracking-widest uppercase">DIVINAI SYSTEMS</span>
+        <span class="h-1 w-1 bg-slate-500 rounded-full"></span>
+        <span class="text-xs uppercase tracking-widest">iSpeak Tees</span>
+      </div>
+      <p class="text-[10px] text-slate-600 uppercase tracking-widest font-medium">
+        Curated by Tamara Hall Lewis &copy; 2025
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    const prompts = [
+      { title: "Corporate Headshot", prompt: "A hyperrealistic, professional corporate headshot. Modern navy blue blazer, confident expression, minimalist office background, 85mm lens." },
+      { title: "Golden Hour", prompt: "Sun-drenched portrait, wildflowers background, warm glowing light, soft focus, ethereal vibe." },
+      { title: "Cyberpunk", prompt: "Futuristic portrait with holographic neon effects, cybernetic enhancements, blue and purple lighting." },
+      { title: "High Fashion", prompt: "Editorial magazine style, avant-garde pose, dramatic chiaroscuro lighting, geometric accessories." },
+      { title: "Boss Energy", prompt: "Standing by a luxury black jet at dusk, business attire, bold confident pose, city lights." },
+      { title: "Empowerment", prompt: "Silhouette against a dramatic mountain sunrise, powerful stance, cinematic lighting." },
+      { title: "Triumph", prompt: "Joyous expression holding a trophy, falling confetti, bright stage lighting." },
+      { title: "Fantasy Hero", prompt: "Digital painting, mythic ornate armor, swirling magical aura, epic landscape." },
+      { title: "Film Noir", prompt: "Black and white artistic portrait, high contrast, dramatic shadows, mysterious expression." },
+      { title: "3D Cartoon", prompt: "Pixar-style 3D character, friendly smile, expressive eyes, vibrant gradient background." }
+    ];
+
+    async function subscribeEmail(email) {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      if (!res.ok) throw new Error('Subscription failed');
+    }
+
+    async function generateCustomPrompt(idea) {
+      const systemPrompt =
+        'You are a professional prompt engineer for DIVINAI SYSTEMS. Convert the user idea into ONE polished AI portrait prompt. Return only the prompt text.';
+      const res = await fetch('/api/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ systemPrompt, userQuery: idea }),
+      });
+      if (!res.ok) throw new Error('Generation failed');
+      const data = await res.json();
+      return data.text;
+    }
+
+    document.getElementById('email-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const emailInput = document.getElementById('email-input');
+      const email = emailInput.value.trim();
+      if (!email) return;
+
+      const submitBtn = e.target.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+
+      try {
+        await subscribeEmail(email);
+
+        document.getElementById('hook-section').classList.add('hidden');
+        const dashboard = document.getElementById('prompts-section');
+        dashboard.classList.remove('hidden');
+        dashboard.classList.add('fade-in');
+
+        const list = document.getElementById('prompt-list');
+        list.innerHTML = '';
+        prompts.forEach((p, i) => {
+          const li = document.createElement('li');
+          li.className = 'prompt-card p-5 rounded-2xl';
+          li.innerHTML = `
+            <div class="flex justify-between items-start">
+              <h5 class="font-bold text-indigo-300 text-sm font-outfit uppercase tracking-tight">${p.title}</h5>
+              <span class="text-[10px] text-slate-500 font-mono">#0${i + 1}</span>
+            </div>
+            <p class="text-xs text-slate-400 mt-2 leading-relaxed italic">${p.prompt}</p>
+          `;
+          list.appendChild(li);
+        });
+      } catch (err) {
+        alert('Something went wrong saving your email. Please try again.');
+      } finally {
+        submitBtn.disabled = false;
+      }
+    });
+
+    document.getElementById('magic-create-btn').addEventListener('click', async () => {
+      const inputEl = document.getElementById('custom-creator-input');
+      const input = inputEl.value.trim();
+      if (!input) return;
+
+      const btn = document.getElementById('magic-create-btn');
+      const spinner = document.getElementById('magic-spinner');
+      const resultContainer = document.getElementById('magic-result-container');
+      const resultText = document.getElementById('magic-result-text');
+
+      btn.disabled = true;
+      spinner.classList.remove('hidden');
+      resultText.textContent = '';
+      resultContainer.classList.add('hidden');
+
+      try {
+        const prompt = await generateCustomPrompt(input);
+        resultText.textContent = prompt;
+        resultContainer.classList.remove('hidden');
+      } catch (err) {
+        console.error(err);
+        resultText.textContent = 'The system is currently busy. Please try again shortly.';
+        resultContainer.classList.remove('hidden');
+      } finally {
+        btn.disabled = false;
+        spinner.classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+</html>

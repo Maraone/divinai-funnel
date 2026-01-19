@@ -132,34 +132,13 @@
 
       <!-- Step 2: The Dashboard (Hidden until email submitted) -->
       <div id="prompts-section" class="hidden">
-        <div class="mb-10 p-7 bg-indigo-950/30 border border-indigo-500/30 rounded-2xl">
-          <h3 class="text-xl font-bold mb-3 flex items-center gap-2 font-outfit">
-            <span class="text-cyan-400">✨</span> Custom Prompt Generator
+        <div class="mb-8 p-7 bg-indigo-950/30 border border-indigo-500/30 rounded-2xl text-center">
+          <h3 class="text-2xl font-bold mb-3 flex items-center justify-center gap-2 font-outfit">
+            <span class="text-cyan-400">🎉</span> Welcome to Your Master Prompt Pack!
           </h3>
-          <p class="text-sm text-slate-400 mb-5">
-            Input your vision and let the DIVINAI engine draft a professional prompt.
+          <p class="text-sm text-slate-400">
+            Below are 10 professionally crafted AI image prompts designed to create stunning, high-quality portraits. Copy any prompt and paste it into your favorite AI image generator (Midjourney, DALL-E, Stable Diffusion, etc.) to create amazing results!
           </p>
-          <div class="flex flex-col sm:flex-row gap-3">
-            <input
-              type="text"
-              id="custom-creator-input"
-              placeholder="Describe your dream avatar..."
-              class="flex-grow px-5 py-3 bg-slate-900 border border-slate-700 rounded-xl text-sm focus:ring-1 focus:ring-cyan-500 outline-none"
-            >
-            <button
-              id="magic-create-btn"
-              class="bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 px-8 rounded-xl transition flex items-center justify-center gap-2 min-w-[120px]"
-            >
-              <span>Create</span>
-              <div id="magic-spinner" class="spinner hidden"></div>
-            </button>
-          </div>
-          <div id="magic-result-container" class="mt-5 hidden">
-            <div
-              id="magic-result-text"
-              class="bg-slate-950/50 p-5 rounded-xl border border-cyan-500/30 text-sm text-slate-200 leading-relaxed italic"
-            ></div>
-          </div>
         </div>
 
         <div class="flex items-center justify-between mb-6 border-b border-slate-700 pb-4">
@@ -186,17 +165,17 @@
   </div>
 
   <script>
-    const prompts = [
-      { title: "Corporate Headshot", prompt: "A hyperrealistic, professional corporate headshot. Modern navy blue blazer, confident expression, minimalist office background, 85mm lens." },
-      { title: "Golden Hour", prompt: "Sun-drenched portrait, wildflowers background, warm glowing light, soft focus, ethereal vibe." },
-      { title: "Cyberpunk", prompt: "Futuristic portrait with holographic neon effects, cybernetic enhancements, blue and purple lighting." },
-      { title: "High Fashion", prompt: "Editorial magazine style, avant-garde pose, dramatic chiaroscuro lighting, geometric accessories." },
-      { title: "Boss Energy", prompt: "Standing by a luxury black jet at dusk, business attire, bold confident pose, city lights." },
-      { title: "Empowerment", prompt: "Silhouette against a dramatic mountain sunrise, powerful stance, cinematic lighting." },
-      { title: "Triumph", prompt: "Joyous expression holding a trophy, falling confetti, bright stage lighting." },
-      { title: "Fantasy Hero", prompt: "Digital painting, mythic ornate armor, swirling magical aura, epic landscape." },
-      { title: "Film Noir", prompt: "Black and white artistic portrait, high contrast, dramatic shadows, mysterious expression." },
-      { title: "3D Cartoon", prompt: "Pixar-style 3D character, friendly smile, expressive eyes, vibrant gradient background." }
+        const prompts = [
+      { title: "Executive Power Portrait", prompt: "Professional corporate headshot, confident African American woman in tailored navy blazer, natural makeup, warm smile, soft studio lighting, neutral gray background, shot with 85mm lens at f/1.8, shallow depth of field, editorial magazine quality, hyper-realistic, 8K resolution" },
+      { title: "Golden Hour Goddess", prompt: "Ethereal outdoor portrait during golden hour, warm sunlight filtering through hair, standing in wildflower meadow, flowing bohemian dress, natural windswept hair, soft bokeh background, dreamy atmosphere, shot with 50mm lens, cinematic color grading, Instagram-worthy aesthetic" },
+      { title: "Cyberpunk Queen", prompt: "Futuristic cyberpunk portrait, neon blue and purple lighting, holographic effects, sleek black outfit with tech accessories, confident pose, urban night cityscape background, rain-slicked streets, blade runner aesthetic, dramatic side lighting, 4K digital art style" },
+      { title: "High Fashion Editorial", prompt: "Vogue-style fashion editorial portrait, avant-garde pose, dramatic chiaroscuro lighting, geometric shadows, minimalist black turtleneck, bold red lipstick, slicked-back hair, stark white background, shot from low angle, high contrast, professional retouching, magazine cover quality" },
+      { title: "Boss Babe Energy", prompt: "Luxury lifestyle portrait, standing confidently beside private jet at sunset, tailored business suit, designer sunglasses, city skyline in background, golden hour lighting, aspirational aesthetic, shot with 35mm lens, shallow depth of field, cinematic composition, ultra-sharp detail" },
+      { title: "Empowerment Silhouette", prompt: "Powerful silhouette portrait at mountain summit during sunrise, arms raised in victory pose, dramatic sky with orange and purple clouds, backlit figure, inspirational mood, wide-angle shot, epic landscape, motivational poster aesthetic, high dynamic range, breathtaking vista" },
+      { title: "Celebration Moment", prompt: "Joyful celebration portrait, holding trophy or award, confetti falling, bright stage lighting, genuine smile of triumph, formal evening gown or suit, bokeh lights in background, professional event photography style, captured mid-laugh, authentic emotion, high-key lighting" },
+      { title: "Fantasy Warrior Princess", prompt: "Epic fantasy character portrait, ornate armor with gold accents, flowing cape, magical glowing aura, mystical forest background, ethereal lighting, digital painting style, highly detailed, dramatic pose with sword, Artstation quality, concept art aesthetic, 4K resolution" },
+      { title: "Film Noir Mystery", prompt: "Classic film noir portrait, black and white, dramatic shadows across face, 1940s inspired outfit with fedora hat, mysterious expression, venetian blind shadows, cigarette smoke atmosphere, high contrast lighting, vintage Hollywood glamour, shot with 50mm lens, timeless elegance" },
+      { title: "3D Animated Character", prompt: "Pixar-style 3D character portrait, friendly approachable expression, big expressive eyes, warm smile, vibrant gradient background (purple to blue), soft rim lighting, cartoon aesthetic, professional animation quality, cute and relatable, Disney/Pixar render style, 4K CGI" }
     ];
 
     async function subscribeEmail(email) {
@@ -259,34 +238,7 @@
       }
     });
 
-    document.getElementById('magic-create-btn').addEventListener('click', async () => {
-      const inputEl = document.getElementById('custom-creator-input');
-      const input = inputEl.value.trim();
-      if (!input) return;
-
-      const btn = document.getElementById('magic-create-btn');
-      const spinner = document.getElementById('magic-spinner');
-      const resultContainer = document.getElementById('magic-result-container');
-      const resultText = document.getElementById('magic-result-text');
-
-      btn.disabled = true;
-      spinner.classList.remove('hidden');
-      resultText.textContent = '';
-      resultContainer.classList.add('hidden');
-
-      try {
-        const prompt = await generateCustomPrompt(input);
-        resultText.textContent = prompt;
-        resultContainer.classList.remove('hidden');
-      } catch (err) {
-        console.error(err);
-        resultText.textContent = 'The system is currently busy. Please try again shortly.';
-        resultContainer.classList.remove('hidden');
-      } finally {
-        btn.disabled = false;
-        spinner.classList.add('hidden');
-      }
-    });
+    
   </script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 /**
  * Vercel Serverless Function: Email Subscription Handler
- * Saves email addresses to Google Sheets
+ * Saves email addresses directly to Google Sheets using Apps Script Web App
  */
 
 export default async function handler(req, res) {
@@ -38,7 +38,7 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Invalid email format' });
     }
 
-    // Get Google Sheets credentials from environment variables
+    // Get Google Apps Script Web App URL from environment variables
     const GOOGLE_SHEETS_URL = process.env.GOOGLE_SHEETS_URL;
 
     if (!GOOGLE_SHEETS_URL) {
@@ -46,24 +46,25 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: 'Server configuration error' });
     }
 
-    // Prepare data for Google Sheets
+    // Prepare data
     const timestamp = new Date().toISOString();
-    const formData = new URLSearchParams();
-    formData.append('Email', email);
-    formData.append('Timestamp', timestamp);
-
-    // Send to Google Sheets via Google Form
+    
+    // Send to Google Sheets via Apps Script Web App
     const response = await fetch(GOOGLE_SHEETS_URL, {
       method: 'POST',
-      body: formData,
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Type': 'application/json',
       },
+      body: JSON.stringify({
+        email: email,
+        timestamp: timestamp
+      }),
     });
 
     if (!response.ok) {
       console.error('Google Sheets submission failed:', response.status);
-      // Still return success to user to avoid exposing internal errors
+      const errorText = await response.text();
+      console.error('Error details:', errorText);
     }
 
     // Return success
